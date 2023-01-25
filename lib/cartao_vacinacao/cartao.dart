@@ -13,6 +13,17 @@ class CartaoVacinacao {
     _vacinasRemedios.add(aplicavel);
   }
 
+  List<Aplicavel> aplicaveisAVencer(int diasParaVencimento) {
+    List<Aplicavel> aplicaveisAVencer = <Aplicavel>[];
+    for (var aplicavel in _vacinasRemedios) {
+      int diasAVencer = aplicavel.diasProximaAplicacao();
+      if (diasAVencer < diasParaVencimento) {
+        aplicaveisAVencer.add(aplicavel);
+      }
+    }
+    return aplicaveisAVencer;
+  }
+
   Animal get animal => _animal;
   List<Aplicavel> get vacinasRemedios => _vacinasRemedios;
 
