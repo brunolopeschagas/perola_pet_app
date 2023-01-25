@@ -3,35 +3,26 @@ import 'package:perola_pet_app/medicina/vacina.dart';
 
 void main() {
   test("verifica se a proxima aplicacao é antes de 30 dias", () {
-    Vacina raiva =
-        Vacina("Raiva", "Vacina contra raiva", DateTime.utc(2023, 01, 22), 365);
+    Vacina vacinaRaiva = Vacina("Raiva", "Vacina contra raiva",
+        DateTime.now().subtract(const Duration(days: 335)), 365);
+    int diasProximaAplicacao = vacinaRaiva.diasProximaAplicacao();
 
-    int diasEntreAplicacaoEVencimento =
-        DateTime.utc(2023, 02, 21).difference(raiva.dataAplicacao).inDays;
+    expect(diasProximaAplicacao, lessThan(30));
+  });
 
-    expect(
-        raiva.diasProximaAplicacao(), lessThan(diasEntreAplicacaoEVencimento));
+  test("verifica se a proxima aplicacao é de 30 dias", () {
+    Vacina vacinaRaiva = Vacina("Raiva", "Vacina contra raiva",
+        DateTime.now().subtract(const Duration(days: 334)), 365);
+    int diasProximaAplicacao = vacinaRaiva.diasProximaAplicacao();
+
+    expect(diasProximaAplicacao, equals(30));
   });
 
   test("verifica se a proxima aplicacao é depois de 30 dias", () {
-    Vacina raiva =
-        Vacina("Raiva", "Vacina contra raiva", DateTime.utc(2023, 01, 22), 365);
+    Vacina vacinaRaiva = Vacina("Raiva", "Vacina contra raiva",
+        DateTime.now().subtract(const Duration(days: 1)), 365);
+    int diasProximaAplicacao = vacinaRaiva.diasProximaAplicacao();
 
-    int diasEntreAplicacaoEVencimento =
-        DateTime.utc(2023, 02, 21).difference(raiva.dataAplicacao).inDays;
-
-    expect(raiva.diasProximaAplicacao(),
-        greaterThan(diasEntreAplicacaoEVencimento));
-  });
-
-  test("verifica se a proxima aplicacao é na data", () {
-    Vacina raiva =
-        Vacina("Raiva", "Vacina contra raiva", DateTime.utc(2023, 01, 22), 365);
-
-    int diasEntreAplicacaoEVencimento =
-        DateTime.utc(2023, 02, 21).difference(raiva.dataAplicacao).inDays;
-
-    expect(raiva.diasProximaAplicacao(),
-        greaterThan(diasEntreAplicacaoEVencimento));
+    expect(diasProximaAplicacao, greaterThan(30));
   });
 }

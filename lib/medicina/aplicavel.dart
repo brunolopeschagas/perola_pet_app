@@ -2,16 +2,13 @@ abstract class Aplicavel {
   String nome;
   String descricao;
   DateTime dataAplicacao;
-  int validadeEmDias;
+  late DateTime dataVencimento;
 
-  Aplicavel(this.nome, this.descricao, this.dataAplicacao, this.validadeEmDias);
-
-  DateTime vencimento() {
-    return dataAplicacao.add(Duration(days: validadeEmDias));
+  Aplicavel(this.nome, this.descricao, this.dataAplicacao, int validadeEmDias) {
+    dataVencimento = dataAplicacao.add(Duration(days: validadeEmDias));
   }
 
   int diasProximaAplicacao() {
-    int diasFaltantes = DateTime.now().difference(dataAplicacao).inDays;
-    return diasFaltantes;
+    return dataVencimento.difference(DateTime.now()).inDays;
   }
 }
