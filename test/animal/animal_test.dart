@@ -3,15 +3,27 @@ import 'package:perola_pet_app/animal/animal.dart';
 
 void main() {
   test("verifica se a idade do pet é > 7 anos", () {
-    final Animal animal =
-        Animal('PÉROLA', 'TCHUCÃO', DateTime.utc(2013, 11, 13));
+    const int anoEmDias = 356 * 8;
+    final Animal animal = Animal('PÉROLA', 'TCHUCÃO',
+        DateTime.now().subtract(const Duration(days: anoEmDias)));
 
     int idade = animal.calcularIdade();
     expect(7, lessThan(idade));
   });
 
+  test("verifica se a idade do pet é 7 anos", () {
+    const int anoEmDias = 356 * 7;
+    final Animal animal = Animal('PÉROLA', 'TCHUCÃO',
+        DateTime.now().subtract(const Duration(days: anoEmDias)));
+
+    int idade = animal.calcularIdade();
+    expect(7, idade);
+  });
+
   test("verifica se a idade do pet é < 7 anos", () {
-    final Animal animal = Animal('PÉROLA', 'TCHUCÃO', DateTime.now());
+    const int anoEmDias = 356 * 6;
+    final Animal animal = Animal('PÉROLA', 'TCHUCÃO',
+        DateTime.now().subtract(const Duration(days: anoEmDias)));
 
     int idade = animal.calcularIdade();
     expect(7, greaterThan(idade));
