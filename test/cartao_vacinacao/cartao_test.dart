@@ -7,7 +7,7 @@ import 'package:perola_pet_app/medicina/vacina.dart';
 void main() {
   test('deve retornar se existe uma vacina aplicada no cartão', () {
     final Animal animal =
-        Animal('PÉROLA', 'TCHUCÃO', DateTime.utc(2013, 11, 13));
+        Animal('PÉROLA', 'TCHUCÃO', DateTime.utc(2013, 11, 13), 7.6);
     final CartaoVacinacao cartaVacinacao = CartaoVacinacao(animal);
     final Aplicavel vacinaRaiva = Vacina(
         'anti-rábica', 'cura da raiva', 'GIGOMPERRY', DateTime.now(), 30);
@@ -19,7 +19,7 @@ void main() {
 
   test('deve retornar se existe uma vacina aplicada no cartão', () {
     final Animal animal =
-        Animal('PÉROLA', 'TCHUCÃO', DateTime.utc(2013, 11, 13));
+        Animal('PÉROLA', 'TCHUCÃO', DateTime.utc(2013, 11, 13), 7.6);
     final CartaoVacinacao cartaVacinacao = CartaoVacinacao(animal);
     final Aplicavel vacinaRaiva = Vacina(
         'anti-rábica', 'cura da raiva', 'GIGOMPERRY', DateTime.now(), 30);
@@ -31,7 +31,7 @@ void main() {
 
   test('deve retornar 2 aplicaveis proximos ao vencimento', () {
     final Animal animal =
-        Animal('PÉROLA', 'TCHUCÃO', DateTime.utc(2013, 11, 13));
+        Animal('PÉROLA', 'TCHUCÃO', DateTime.utc(2013, 11, 13), 7.6);
     final CartaoVacinacao cartaVacinacao = CartaoVacinacao(animal);
 
     final Aplicavel vacinaRaiva = Vacina(

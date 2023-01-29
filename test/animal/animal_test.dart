@@ -5,7 +5,7 @@ void main() {
   test("verifica se a idade do pet é > 7 anos", () {
     const int anoEmDias = 356 * 8;
     final Animal animal = Animal('PÉROLA', 'TCHUCÃO',
-        DateTime.now().subtract(const Duration(days: anoEmDias)));
+        DateTime.now().subtract(const Duration(days: anoEmDias)), 7.6);
 
     int idade = animal.calcularIdade();
     expect(7, lessThan(idade));
@@ -14,7 +14,7 @@ void main() {
   test("verifica se a idade do pet é 7 anos", () {
     const int anoEmDias = 356 * 7;
     final Animal animal = Animal('PÉROLA', 'TCHUCÃO',
-        DateTime.now().subtract(const Duration(days: anoEmDias)));
+        DateTime.now().subtract(const Duration(days: anoEmDias)), 7.6);
 
     int idade = animal.calcularIdade();
     expect(7, idade);
@@ -23,7 +23,7 @@ void main() {
   test("verifica se a idade do pet é < 7 anos", () {
     const int anoEmDias = 356 * 6;
     final Animal animal = Animal('PÉROLA', 'TCHUCÃO',
-        DateTime.now().subtract(const Duration(days: anoEmDias)));
+        DateTime.now().subtract(const Duration(days: anoEmDias)), 7.6);
 
     int idade = animal.calcularIdade();
     expect(7, greaterThan(idade));
