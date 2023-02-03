@@ -6,7 +6,12 @@ import '../animal/animal.dart';
 class Prontuario {
   Animal animal;
   Cartao cartao;
-  List<StatusSaude> historicoSaude;
+  late List<StatusSaude> historicoSaude = <StatusSaude>[];
 
-  Prontuario(this.animal, this.cartao, this.historicoSaude);
+  Prontuario(this.animal, this.cartao);
+  Prontuario.historicoSaude(this.animal, this.cartao, this.historicoSaude);
+
+  void adicionarRegistroSaude(StatusSaude statusSaude) {
+    historicoSaude.add(statusSaude);
+  }
 }
